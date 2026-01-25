@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proofs</title>
+    <link rel="stylesheet" href="Proofs.CSS">
+</head>
+<body>
+
+    <div class="contenedor">
+        <h1 class="texto-password">Password</h1>
+        
+        <div class="input-container">
+            <input type="password" id="passwordInput" placeholder="Write">
+            <button id="enviarBtn">Send</button>
+        </div>
+
+        <p id="mensajeError" style="color: red; font-size: 18px; margin-top: 15px; display: none;">Incorrect Password</p>
+    </div>
+
+    <script>
+        // Usamos window.onload para asegurar que el navegador ya dibujó el botón
+        window.onload = function() {
+            const input = document.getElementById('passwordInput');
+            const boton = document.getElementById('enviarBtn');
+            const errorMsg = document.getElementById('mensajeError');
+
+            function verificar() {
+                const claveSecreta = "T3cHN0dIscoVerm3nt";
+                const valor = input.value.trim(); // Quitamos espacios accidentales
+
+                if (valor === claveSecreta) {
+                    // Al impulsarte con la clave, la velocidad es total hacia la otra página
+                    window.location.href = "Secrets.HTML";
+                } else {
+                    // Si falla, mostramos el mensaje de error en pantalla
+                    errorMsg.style.display = "block";
+                    input.value = ""; // Limpiamos la barra
+                    input.focus();    // Ponemos el cursor listo para reintentar
+                }
+            }
+
+            // Acción al hacer clic
+            boton.onclick = verificar;
+
+            // Acción al presionar Enter
+            input.onkeydown = function(e) {
+                if (e.key === "Enter") {
+                    verificar();
+                }
+            };
+        };
+    </script>
+</body>
+</html>

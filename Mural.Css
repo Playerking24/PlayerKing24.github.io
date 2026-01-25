@@ -1,0 +1,10 @@
+body {
+    background-color: rgb(0, 0, 0);
+}
+
+.button {
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: large;
+    margin: 50px;
+}
