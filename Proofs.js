@@ -1,37 +1,33 @@
-<script>
-  // Esta función se asegura de que el código corra sí o sí
-  window.onload = function() {
-    const input = document.getElementById('passwordInput');
-    const boton = document.getElementById('enviarBtn');
-    const errorMsg = document.getElementById('mensajeError');
+function comprobar() {
+    const claveCorrecta = "T3cHN0dIscoVerm3nt";
+    const nombreEspecial = "matthew"; // Lo ponemos en minúsculas para comparar mejor
+    
+    // Obtenemos el valor, quitamos espacios y lo pasamos a minúsculas solo para la comparación especial
+    const intentoOriginal = input.value.trim();
+    const intentoMinusculas = intentoOriginal.toLowerCase();
 
-    function comprobar() {
-      const clave = "T3cHN0dIscoVerm3nt";
-      
-      // Limpiamos el mensaje de error cada vez que intentamos
-      errorMsg.style.display = "none";
+    // Limpiamos el estado visual antes de validar
+    errorMsg.style.display = "none";
+    errorMsg.style.color = "red"; 
 
-      if (input.value === clave) {
-        // Redirección con impulso de velocidad
+    if (intentoOriginal === claveCorrecta) {
+        // ÉXITO: Redirección
         window.location.href = "Secrets.HTML";
-      } else {
-        // Mostrar el texto de "Incorrect Password" en la pantalla
+    } 
+    else if (intentoMinusculas === nombreEspecial) {
+        // CASO ARG: Matthew
+        console.log("Detectado nombre especial: Matthew");
+        errorMsg.innerText = "I don't want to talk about him"; // Usamos innerText para asegurar el cambio
+        errorMsg.style.color = "orange"; // Color de advertencia narrativa
         errorMsg.style.display = "block";
-        input.value = ""; // Limpiar la barra
-        input.focus();
-      }
+        input.value = ""; 
+    } 
+    else {
+        // ERROR ESTÁNDAR
+        errorMsg.innerText = "Incorrect Password";
+        errorMsg.style.display = "block";
+        input.value = "";
     }
-
-    // Vinculamos el clic
-    boton.onclick = comprobar;
-
-    // Vinculamos la tecla Enter
-    input.onkeydown = function(e) {
-      if (e.key === "Enter") {
-        comprobar();
-      }
-    };
-
-    console.log("Sistema de seguridad activado y listo.");
-  };
-</script>
+    
+    input.focus();
+}

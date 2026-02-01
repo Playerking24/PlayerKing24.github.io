@@ -16,3 +16,17 @@ Body {
     width: 10%; 
     padding: 200px;
 }
+.boton-secreto {
+    position: fixed;   /* Flota sobre las imágenes */
+    bottom: 30px;      /* Distancia desde el suelo */
+    left: 50%;         /* Centrado horizontal */
+    transform: translateX(-50%);
+    color: rgb(0, 0, 0);        /* Color para que lo veas ahora */
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 20px;
+    text-decoration: none;
+    z-index: 1000;     /* Por encima de todo */
+    background-color: rgba(0, 0, 0, 0.7); /* Fondo oscuro para que resalte */
+    padding: 10px 20px;
+    border: 1px solid rgb(0, 0, 0);
+}
